@@ -282,12 +282,7 @@ This document provides **everything** you need to know to use, test, and trouble
 
 ---
 
-## 📬 Need Help?
 
-Clone this repo and run scripts in test environments. All are well-commented and structured to demonstrate automation and sysadmin maturity.
-
----
-
-**Maintained by:** abg1122
+**Maintained by:** Absam Gill
 
 ---
