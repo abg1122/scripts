@@ -1,0 +1,45 @@
+# .github/workflows/ci.yml
+# Basic CI pipeline for PowerShell and Terraform validation
+
+# Author: abg1122
+
+name: CI Validation
+
+on:
+  push:
+    paths:
+      - '**.ps1'
+      - '**.tf'
+  pull_request:
+    paths:
+      - '**.ps1'
+      - '**.tf'
+
+jobs:
+  powershell-lint:
+    name: PowerShell Script Check
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Run PSScriptAnalyzer
+        run: |
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+          Invoke-ScriptAnalyzer -Path . -Recurse
+
+  terraform-validate:
+    name: Terraform Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Init Terraform
+        run: terraform init
+
+      - name: Validate Terraform
+        run: terraform validate
