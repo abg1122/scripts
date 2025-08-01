@@ -1,0 +1,62 @@
+# Ignore compiled files and temp files
+*.pyc
+*.pyo
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+*.tar.gz
+*.zip
+
+# VSCode settings
+.vscode/
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+Icon?
+.DS_Store
+__MACOSX/
+
+# PowerShell specific
+*.ps1xml
+*.psm1
+*.psd1
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+.terraform.lock.hcl
+
+# Python virtualenvs
+venv/
+env/
+__pycache__/
+
+# Node Exporter temp files (if any)
+node_exporter*
+
+# Secrets/sensitive files (never commit)
+secrets.json
+*.pem
+*.key
+*.crt
+*.pfx
+.env
+.env.*
+
+# CI/CD artifacts
+coverage/
+build/
+dist/
+
+# Ignore generated logs and report files
+*.out
+*.csv
+*.xlsx
+eventlog_errors.txt
