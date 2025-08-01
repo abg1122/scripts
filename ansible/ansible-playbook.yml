@@ -1,0 +1,50 @@
+---
+# ansible-playbook.yml
+# Installs LAMP stack or Docker depending on a variable toggle
+
+# Author: abg1122
+
+- name: Configure Linux server
+  hosts: webservers
+  become: yes
+  vars:
+    install_lamp: true   # Set to false to install Docker instead
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install LAMP stack
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apache2
+        - mysql-server
+        - php
+        - libapache2-mod-php
+      when: install_lamp
+
+    - name: Install Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - docker.io
+        - docker-compose
+      when: not install_lamp
+
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: true
+      when: install_lamp
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: true
+      when: not install_lamp
