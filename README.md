@@ -1,4 +1,4 @@
-This repo contains a collection of PowerShell and Bash scripts I’ve developed and used in real-world 3rd line support and infrastructure operations. These scripts have been used to automate repetitive tasks, improve monitoring, and enhance team efficiency across hybrid Windows/Linux environments.
+This repo contains a collection of PowerShell and Bash scripts I’ve developed. 
 
 ## 🛠 Scripts Overview
 
