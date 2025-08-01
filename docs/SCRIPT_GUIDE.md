@@ -37,7 +37,7 @@ This document provides **everything** you need to know to use, test, and trouble
 │
 ├── docs/
 │   ├── troubleshooting_checklist.md
-│   └── prerequisites.md
+│   └── SCRIPT_GUIDE.md
 ```
 
 ---
