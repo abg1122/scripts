@@ -43,4 +43,4 @@ sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
 
 # --- Final output ---
-echo "✅ node_exporter is running. Listening on port 9100"
+echo "node_exporter is running. Listening on port 9100"
