@@ -19,9 +19,9 @@ df -h --output=target,pcent | grep -vE 'Filesystem|tmpfs|devtmpfs' | while read 
     usage=$(echo $line | awk '{print $2}' | tr -d '%')
 
     if [ "$usage" -ge "$threshold" ]; then
-        echo "[$timestamp] ❌ WARNING: $mount_point is at ${usage}% usage." | tee -a "$logfile"
+        echo "[$timestamp] WARNING: $mount_point is at ${usage}% usage." | tee -a "$logfile"
     else
-        echo "[$timestamp] ✅ OK: $mount_point is at ${usage}%." >> "$logfile"
+        echo "[$timestamp] OK: $mount_point is at ${usage}%." >> "$logfile"
     fi
 done
 
