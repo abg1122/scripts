@@ -12,7 +12,7 @@ $LogPath = "C:\Scripts\group_membership_log.txt"
 try {
     $GroupMembers = Get-ADGroupMember -Identity $GroupName -Recursive | Select-Object -ExpandProperty SamAccountName
 } catch {
-    Write-Error "❌ Could not retrieve group: $GroupName"
+    Write-Error "Could not retrieve group: $GroupName"
     exit 1
 }
 
@@ -23,12 +23,12 @@ $UnexpectedUsers = $GroupMembers | Where-Object { $_ -notin $BaselineUsers }
 $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 if ($UnexpectedUsers) {
     foreach ($User in $UnexpectedUsers) {
-        $LogEntry = "$Timestamp - ❗ Unauthorized user in '$GroupName': $User"
+        $LogEntry = "$Timestamp - Unauthorized user in '$GroupName': $User"
         Add-Content -Path $LogPath -Value $LogEntry
     }
-    Write-Output "⚠️ Unexpected users found. Details logged to $LogPath"
+    Write-Output "Unexpected users found. Details logged to $LogPath"
 } else {
-    $LogEntry = "$Timestamp - ✅ All members of '$GroupName' match baseline."
+    $LogEntry = "$Timestamp - All members of '$GroupName' match baseline."
     Add-Content -Path $LogPath -Value $LogEntry
     Write-Output "All OK"
 }
