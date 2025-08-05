@@ -27,7 +27,7 @@ def check_security_groups():
             for ip_range in ip_ranges:
                 cidr = ip_range.get("CidrIp", "")
                 if is_insecure(cidr) and from_port in [22, 3389]:
-                    print(f"❗ {sg_name} ({sg_id}) allows {cidr} on port {from_port}")
+                    print(f"{sg_name} ({sg_id}) allows {cidr} on port {from_port}")
 
 if __name__ == "__main__":
     try:
